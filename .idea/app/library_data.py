@@ -1,6 +1,6 @@
 import csv
 import random
-
+from datetime import datetime
 from movie import Movie
 from serie import Serie
 
@@ -105,6 +105,13 @@ class LibraryData:
         for x in range(10):
             self.generate_views()
 
+    def top_titles(self):
+        videos_to_show = 3
+        filtered_videos = sorted(self.videos, key=lambda video: int(video._views), reverse=True)
+        today = datetime.today().strftime("%d.%m.%Y")
+        print(f"Most popular movies and series for {today}")
+        return filtered_videos[:videos_to_show]
+
     def open_library(self):
         print("Videos library")
         try:
@@ -122,6 +129,7 @@ class LibraryData:
             s - show all series
             search - search by title
             change - change number of views
+            top - top titles today
             save - save data
             """).lower()
             if message == "m":
@@ -134,4 +142,6 @@ class LibraryData:
                 self.save_data()
             elif message == "change":
                 self.change()
+            elif message == "top":
+                self.show_videos(self.top_titles())
         self.exit_program()

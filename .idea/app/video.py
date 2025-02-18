@@ -10,4 +10,4 @@ class Video:
         self._views = int(self._views) + 1
 
     def __str__(self):
-        return f"{self.title} {self.year} Views: {self._views}"
+        return f"{self.title} {self.year}"

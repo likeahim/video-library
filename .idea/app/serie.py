@@ -13,4 +13,4 @@ class Serie(Video):
             return number.zfill(2)
 
     def __str__(self):
-        return f"{self.title} S{self.calculate_number(self.season)}E{self.calculate_number(self.episode)} Views: {self._views}"
+        return f"{self.title} S{self.calculate_number(self.season)}E{self.calculate_number(self.episode)}"
